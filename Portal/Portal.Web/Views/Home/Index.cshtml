@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel
+
+@if (Model != null)
+{
+    // we have a result from previous form submittion
+    @if (Model.Success)
+    {
+        <div class="alert alert-success">
+            <strong>Successful</strong>
+            <p>@Model.Message</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>Error Posting Image</strong>
+            <p>@Model.Message</p>
+        </div>
+    }
+}
+
+<form method="post" action="/">
+    <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" name="imageUrl" required id="imageUrl" class="form-control" value="https://unepdtu.org/wp-content/uploads/sites/3/2020/07/3d-rendering-conceptual-image-of-internet-server-room-and-or-super-computer-network-stock-image-400x500.jpg" />
+    </div>
+    <div class="form-group">
+        <label for="comment">Caption</label>
+        <input type="text" name="comment" required id="comment" class="form-control" value="some title" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
